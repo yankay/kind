@@ -96,10 +96,10 @@ jobs:
           sudo kubectl get nodes -o wide
           sudo kubectl get pods -A
 
-        # TODO: implement this
       - name: Load docker image
-        run: sudo KIND_EXPERIMENTAL_PROVIDER=podman kind load docker-image busybox:2
-        continue-on-error: true
+        run: |
+          podman pull busybox
+          sudo KIND_EXPERIMENTAL_PROVIDER=podman /usr/local/bin/kind load docker-image busybox
 
       - name: Export logs
         if: always()
