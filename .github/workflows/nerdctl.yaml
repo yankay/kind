@@ -62,6 +62,9 @@ jobs:
           # Show Versions
           sudo ctr version
           sudo nerdctl version
+      
+      - name: Setup upterm session
+        uses: lhotari/action-upterm@v1
 
       - name: Create single node cluster
         if: ${{ matrix.deployment == 'singleNode' }}
